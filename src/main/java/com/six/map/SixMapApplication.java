@@ -14,6 +14,6 @@ public class SixMapApplication {
         SpringApplication application = new SpringApplication(SixMapApplication.class);
         application.setBannerMode(Banner.Mode.OFF);
         application.run(args);
-        log.info("The Sports-Info application has been started successfully!");
+        log.info("The Six-Map application has been started successfully!");
     }
 }
