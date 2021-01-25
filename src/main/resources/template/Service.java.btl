@@ -1,0 +1,25 @@
+package ${package}.modules.${module}.service;
+
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import AutoBaseService;
+
+import ${package}.common.entity.Page;
+import ${package}.common.entity.R;
+import ${package}.modules.api.entity.${className}Entity;
+import ${package}.common.entity.Query;
+import ${package}.common.utils.CommonUtils;
+import lombok.extern.slf4j.Slf4j;
+import ${package}.modules.api.dao.${className}Mapper;
+
+/**
+ * ${comments}
+ * @author ${author}<${email}>
+ */
+ @Service("${objName}Service")
+ @Slf4j
+public class ${className}Service  extends AutoBaseService<${className}Mapper,${className}Entity> {
+
+	
+}
