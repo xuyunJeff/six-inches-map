@@ -13,7 +13,7 @@ import com.six.map.common.support.properties.JwtProperties;
 import com.six.map.common.support.redis.RedisCacheManager;
 import com.six.map.common.utils.CommonUtils;
 import com.six.map.common.utils.MD5Utils;
-import com.xy.sports.modules.sys.dao.*;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
