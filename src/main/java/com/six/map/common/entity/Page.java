@@ -3,13 +3,15 @@ package com.six.map.common.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Data;
 import org.apache.ibatis.session.RowBounds;
 
 /**
  * Mybatis分页参数及查询结果封装. 注意所有序号从1开始
  *
- * @author zcl<yczclcn@163.com>
+ * @author zcl<yczclcn @ 1 6 3 . com>
  */
+
 public class Page<T> extends RowBounds {
 
     /**
@@ -46,6 +48,9 @@ public class Page<T> extends RowBounds {
      * 总页数
      */
     protected int totalPages;
+
+    public int code = 0;
+    public String des = "操作成功";
 
     /**
      * 计算偏移量
@@ -156,4 +161,19 @@ public class Page<T> extends RowBounds {
         this.totalPages = totalPages;
     }
 
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getDes() {
+        return des;
+    }
+
+    public void setDes(String des) {
+        this.des = des;
+    }
 }

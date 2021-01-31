@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.six.map.inch.dao.DtMapNameMapper">
+	
+	<select id="listForPage" resultType="com.six.map.inch.entity.DtMapNameEntity">
+		SELECT
+			`id`, 
+			`name`, 
+			`title`, 
+			`vip_count`, 
+			`type`, 
+			`maptype`, 
+			`attribution`, 
+			`urlTemplate`, 
+			`subdomains`, 
+			`urlTemplate_road`, 
+			`subdomains_road`, 
+			`urlTemplate_traffic`, 
+			`subdomains_traffic`, 
+			`sort`, 
+			`projection`, 
+			`maxzoom`, 
+			`minzoom`, 
+			`css_filter`, 
+			`status`, 
+			`is_default`, 
+			`img_url`
+		FROM
+			dt_map_name
+				 	<where>
+				 	1=1
+            			<if test="name != null"> and `name` = #{name}  </if>
+            			<if test="title != null"> and `title` = #{title}  </if>
+            			<if test="vipCount != null"> and `vip_count` = #{vipCount}  </if>
+            			<if test="type != null"> and `type` = #{type}  </if>
+            			<if test="maptype != null"> and `maptype` = #{maptype}  </if>
+            			<if test="attribution != null"> and `attribution` = #{attribution}  </if>
+            			<if test="urltemplate != null"> and `urlTemplate` = #{urltemplate}  </if>
+            			<if test="subdomains != null"> and `subdomains` = #{subdomains}  </if>
+            			<if test="urltemplateRoad != null"> and `urlTemplate_road` = #{urltemplateRoad}  </if>
+            			<if test="subdomainsRoad != null"> and `subdomains_road` = #{subdomainsRoad}  </if>
+            			<if test="urltemplateTraffic != null"> and `urlTemplate_traffic` = #{urltemplateTraffic}  </if>
+            			<if test="subdomainsTraffic != null"> and `subdomains_traffic` = #{subdomainsTraffic}  </if>
+            			<if test="sort != null"> and `sort` = #{sort}  </if>
+            			<if test="projection != null"> and `projection` = #{projection}  </if>
+            			<if test="maxzoom != null"> and `maxzoom` = #{maxzoom}  </if>
+            			<if test="minzoom != null"> and `minzoom` = #{minzoom}  </if>
+            			<if test="cssFilter != null"> and `css_filter` = #{cssFilter}  </if>
+            			<if test="status != null"> and `status` = #{status}  </if>
+            			<if test="isDefault != null"> and `is_default` = #{isDefault}  </if>
+            			<if test="imgUrl != null"> and `img_url` = #{imgUrl}</if>
+            		</where>
+		ORDER BY
+			id DESC
+	</select>
+	
+	<insert id="save">
+		INSERT INTO dt_map_name (
+			`name`, 
+			`title`, 
+			`vip_count`, 
+			`type`, 
+			`maptype`, 
+			`attribution`, 
+			`urlTemplate`, 
+			`subdomains`, 
+			`urlTemplate_road`, 
+			`subdomains_road`, 
+			`urlTemplate_traffic`, 
+			`subdomains_traffic`, 
+			`sort`, 
+			`projection`, 
+			`maxzoom`, 
+			`minzoom`, 
+			`css_filter`, 
+			`status`, 
+			`is_default`, 
+			`img_url`
+		)
+		VALUES (
+			#{name}, 
+			#{title}, 
+			#{vipCount}, 
+			#{type}, 
+			#{maptype}, 
+			#{attribution}, 
+			#{urltemplate}, 
+			#{subdomains}, 
+			#{urltemplateRoad}, 
+			#{subdomainsRoad}, 
+			#{urltemplateTraffic}, 
+			#{subdomainsTraffic}, 
+			#{sort}, 
+			#{projection}, 
+			#{maxzoom}, 
+			#{minzoom}, 
+			#{cssFilter}, 
+			#{status}, 
+			#{isDefault}, 
+			#{imgUrl}
+		)
+	</insert>
+	
+	<select id="getObjectById" resultType="com.six.map.inch.entity.DtMapNameEntity">
+		SELECT
+			`id`, 
+			`name`, 
+			`title`, 
+			`vip_count`, 
+			`type`, 
+			`maptype`, 
+			`attribution`, 
+			`urlTemplate`, 
+			`subdomains`, 
+			`urlTemplate_road`, 
+			`subdomains_road`, 
+			`urlTemplate_traffic`, 
+			`subdomains_traffic`, 
+			`sort`, 
+			`projection`, 
+			`maxzoom`, 
+			`minzoom`, 
+			`css_filter`, 
+			`status`, 
+			`is_default`, 
+			`img_url`
+		FROM
+			dt_map_name
+		WHERE
+			id = #{id}
+	</select>
+	
+	<update id="update">
+		UPDATE dt_map_name
+	 	<set>
+			<if test="name != null">`name` = #{name}, </if>
+			<if test="title != null">`title` = #{title}, </if>
+			<if test="vipCount != null">`vip_count` = #{vipCount}, </if>
+			<if test="type != null">`type` = #{type}, </if>
+			<if test="maptype != null">`maptype` = #{maptype}, </if>
+			<if test="attribution != null">`attribution` = #{attribution}, </if>
+			<if test="urltemplate != null">`urlTemplate` = #{urltemplate}, </if>
+			<if test="subdomains != null">`subdomains` = #{subdomains}, </if>
+			<if test="urltemplateRoad != null">`urlTemplate_road` = #{urltemplateRoad}, </if>
+			<if test="subdomainsRoad != null">`subdomains_road` = #{subdomainsRoad}, </if>
+			<if test="urltemplateTraffic != null">`urlTemplate_traffic` = #{urltemplateTraffic}, </if>
+			<if test="subdomainsTraffic != null">`subdomains_traffic` = #{subdomainsTraffic}, </if>
+			<if test="sort != null">`sort` = #{sort}, </if>
+			<if test="projection != null">`projection` = #{projection}, </if>
+			<if test="maxzoom != null">`maxzoom` = #{maxzoom}, </if>
+			<if test="minzoom != null">`minzoom` = #{minzoom}, </if>
+			<if test="cssFilter != null">`css_filter` = #{cssFilter}, </if>
+			<if test="status != null">`status` = #{status}, </if>
+			<if test="isDefault != null">`is_default` = #{isDefault}, </if>
+			<if test="imgUrl != null">`img_url` = #{imgUrl}</if>
+		</set>
+		WHERE
+			id = #{id}
+	</update>
+	
+	<delete id="batchRemove">
+		DELETE
+		FROM
+			dt_map_name
+		WHERE
+			id IN
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<select id="selectInIds" resultType="long">
+    		select id
+    		FROM
+    			dt_map_name
+    		WHERE
+    			id IN
+    		<foreach item="id" collection="list" open="(" separator="," close=")">
+    			#{id}
+    		</foreach>
+    	</select>
+
+</mapper>

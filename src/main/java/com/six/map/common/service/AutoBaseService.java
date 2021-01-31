@@ -2,6 +2,7 @@ package com.six.map.common.service;
 
 import com.six.map.common.utils.CommonUtils;
 import com.six.map.common.utils.ShiroUtils;
+import com.six.map.inch.entity.DtUserEntity;
 import com.six.map.modules.sys.dao.SysOrgMapper;
 import com.six.map.modules.sys.dao.SysRoleMapper;
 import com.six.map.modules.sys.dao.SysUserMapper;
@@ -29,7 +30,7 @@ public abstract class AutoBaseService<M extends AutoBaseMapper, E extends AutoBa
     @Autowired
     protected M mapper;
 
-    @Autowired
+    /*@Autowired
     protected SysUserMapper sysUserMapper;
 
     @Autowired
@@ -39,7 +40,7 @@ public abstract class AutoBaseService<M extends AutoBaseMapper, E extends AutoBa
     protected SysOrgMapper sysOrgMapper;
 
     @Autowired
-    protected SysUserRoleMapper userRoleMapper;
+    protected SysUserRoleMapper userRoleMapper;*/
 
 
     @Autowired
@@ -52,8 +53,8 @@ public abstract class AutoBaseService<M extends AutoBaseMapper, E extends AutoBa
      * @param params
      * @return
      */
-    public Page<E> listEntity(Map<String, Object> params) {
-        Query query = new Query(params);
+    public Page<E> listEntity(Map<String, Object> param) {
+        Query query = new Query(param);
         Page<E> page = new Page<>(query);
         mapper.listForPage(page, query);
         return page;
@@ -62,11 +63,17 @@ public abstract class AutoBaseService<M extends AutoBaseMapper, E extends AutoBa
     /**
      * 新增
      *
-     * @param blockBankCard
+     * @param
      * @return
      */
-    public R saveEntity(E blockBankCard) {
-        int count = mapper.insert(blockBankCard);
+    public R saveEntity(E entity) {
+        DtUserEntity user = (DtUserEntity) entity;
+        String mobile = user.getMobile();
+        Object userDto = mapper.getObjectById(mobile);
+        int count = 0;
+        if (userDto == null) {
+            count = mapper.insert(entity);
+        }
         return CommonUtils.msg(count);
     }
 
@@ -89,6 +96,11 @@ public abstract class AutoBaseService<M extends AutoBaseMapper, E extends AutoBa
      */
     public R updateEntity(E e) {
         int count = mapper.updateByPrimaryKeySelective(e);
+        return CommonUtils.msg(count);
+    }
+
+    public R remove(Long id) {
+        int count = mapper.remove(id);
         return CommonUtils.msg(count);
     }
 
@@ -164,7 +176,7 @@ public abstract class AutoBaseService<M extends AutoBaseMapper, E extends AutoBa
      * @param userId
      * @return
      */
-    protected SysUserEntity getUserById(Long userId) {
+    /*protected SysUserEntity getUserById(Long userId) {
         if (userId == null || userId == 0L) {
             throw new RRException("查询user时，userId不能为空");
         }
@@ -173,6 +185,6 @@ public abstract class AutoBaseService<M extends AutoBaseMapper, E extends AutoBa
         userEntity.setRoleNameList(sysRoleMapper.listUserRoleNames(userEntity.getRoleId()));
         Optional.ofNullable(sysOrgMapper.getObjectById(userEntity.getOrgId())).ifPresent(org->userEntity.setOrgName(org.getName()));
         return userEntity;
-    }
+    }*/
 
 }

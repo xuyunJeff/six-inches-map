@@ -163,6 +163,15 @@ public class ShiroConfig {
         filterMap.put("/apiV1/footballBase/**","anon");
         filterMap.put("/apiV1/footballTeam/**","anon");
         filterMap.put("/wap/login", "anon");
+        //路径
+        filterMap.put("/user/**", "anon");
+        filterMap.put("/dituapi/**", "anon");
+        //swagger
+        filterMap.put("/swagger-resources/**", "anon");
+        filterMap.put("/webjars/**", "anon");
+        filterMap.put("/swagger-ui.html/**", "anon");
+        filterMap.put("/v2/*", "anon");
+
         //TODO 添加匿名访问
         return filterMap;
     }

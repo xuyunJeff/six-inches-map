@@ -13,7 +13,7 @@
     </select>
 
     <select id="list" resultType="com.six.map.modules.sys.entity.SysMenuEntity">
-        SELECT
+        /*SELECT
         m.menu_id,
         m.parent_id,
         (
@@ -33,7 +33,7 @@
         FROM
         sys_menu m
         ORDER BY
-        m.order_num ASC
+        m.order_num ASC*/
     </select>
 
     <select id="listNotButton" resultType="com.six.map.modules.sys.entity.SysMenuEntity">

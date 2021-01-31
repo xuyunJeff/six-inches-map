@@ -19,6 +19,12 @@ public class Query extends HashMap<String, Object> {
 
     public Query(Map<String, Object> params) {
         this.putAll(params);
+        if(getAsInt("pageNumber") == null){
+            this.put("pageNumber", 1);
+        }
+        if(getAsInt("pageSize") == null){
+            this.put("pageSize", 10);
+        }
     }
 
     public Double getAsDouble(String name) {

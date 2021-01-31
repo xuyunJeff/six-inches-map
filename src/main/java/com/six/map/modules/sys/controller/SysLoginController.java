@@ -30,7 +30,6 @@ import java.util.Date;
  *
  * @author zcl<yczclcn@163.com>
  */
-@Api(value="用户controller",tags={"用户"})
 @Controller
 public class SysLoginController extends AbstractController {
 
@@ -103,7 +102,6 @@ public class SysLoginController extends AbstractController {
 
     @SysLog("新用户注册")
     @RequestMapping(value = "/register", method = {RequestMethod.POST})
-    @ApiOperation(value="新用户注册",notes="新用户注册")
     @ResponseBody
     public R save(@ModelAttribute SysUserEntity user) {
         user.setOrgId(3L);
@@ -127,7 +125,6 @@ public class SysLoginController extends AbstractController {
      * 登录
      */
     @SysLog("登录")
-    @ApiOperation(value="登录",notes="登录")
     @RequestMapping(value = "/wap/login", method = {RequestMethod.POST})
     @ResponseBody
     public R wapLogin(@ModelAttribute LoginRequest loginRequest) {

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.six.map.inch.dao.DtAppVersionMapper">
+
+	<select id="listForPage" resultType="com.six.map.inch.entity.DtAppVersionEntity">
+		SELECT
+			`id`, 
+			`version`, 
+			`version_code`, 
+			`descript`, 
+			`update_link`, 
+			`os_link`, 
+			`is_hot`, 
+			`latest`, 
+			`status`
+		FROM
+			dt_app_version
+				 	<where>
+				 	1=1
+            			<if test="version != null"> and `version` = #{version}  </if>
+            			<if test="versionCode != null"> and `version_code` = #{versionCode}  </if>
+            			<if test="descript != null"> and `descript` = #{descript}  </if>
+            			<if test="updateLink != null"> and `update_link` = #{updateLink}  </if>
+            			<if test="osLink != null"> and `os_link` = #{osLink}  </if>
+            			<if test="isHot != null"> and `is_hot` = #{isHot}  </if>
+            			<if test="latest != null"> and `latest` = #{latest}  </if>
+            			<if test="status != null"> and `status` = #{status}</if>
+            		</where>
+		ORDER BY
+			id DESC
+	</select>
+	
+	<insert id="save">
+		INSERT INTO dt_app_version (
+			`version`, 
+			`version_code`, 
+			`descript`, 
+			`update_link`, 
+			`os_link`, 
+			`is_hot`, 
+			`latest`, 
+			`status`
+		)
+		VALUES (
+			#{version}, 
+			#{versionCode}, 
+			#{descript}, 
+			#{updateLink}, 
+			#{osLink}, 
+			#{isHot}, 
+			#{latest}, 
+			#{status}
+		)
+	</insert>
+	
+	<select id="getObjectById" resultType="com.six.map.inch.entity.DtAppVersionEntity">
+		SELECT
+			`id`, 
+			`version`, 
+			`version_code`, 
+			`descript`, 
+			`update_link`, 
+			`os_link`, 
+			`is_hot`, 
+			`latest`, 
+			`status`
+		FROM
+			dt_app_version
+		WHERE
+			id = #{id}
+	</select>
+	
+	<update id="update">
+		UPDATE dt_app_version
+	 	<set>
+			<if test="version != null">`version` = #{version}, </if>
+			<if test="versionCode != null">`version_code` = #{versionCode}, </if>
+			<if test="descript != null">`descript` = #{descript}, </if>
+			<if test="updateLink != null">`update_link` = #{updateLink}, </if>
+			<if test="osLink != null">`os_link` = #{osLink}, </if>
+			<if test="isHot != null">`is_hot` = #{isHot}, </if>
+			<if test="latest != null">`latest` = #{latest}, </if>
+			<if test="status != null">`status` = #{status}</if>
+		</set>
+		WHERE
+			id = #{id}
+	</update>
+	
+	<delete id="batchRemove">
+		DELETE
+		FROM
+			dt_app_version
+		WHERE
+			id IN
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<select id="selectInIds" resultType="long">
+    		select id
+    		FROM
+    			dt_app_version
+    		WHERE
+    			id IN
+    		<foreach item="id" collection="list" open="(" separator="," close=")">
+    			#{id}
+    		</foreach>
+    	</select>
+
+</mapper>

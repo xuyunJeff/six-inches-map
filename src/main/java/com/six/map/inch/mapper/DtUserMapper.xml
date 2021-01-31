@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.six.map.inch.dao.DtUserMapper">
+	
+	<select id="listForPage" resultType="com.six.map.inch.entity.DtUserEntity">
+		SELECT
+			`id`, 
+			`user_type`, 
+			`sex`, 
+			`birthday`, 
+			`last_login_time`, 
+			`score`, 
+			`coin`, 
+			`create_time`, 
+			`user_status`, 
+			`user_login`, 
+			`user_pass`, 
+			`user_nickname`, 
+			`user_email`, 
+			`user_qq`, 
+			`avatar`, 
+			`signature`, 
+			`last_login_ip`, 
+			`user_activation_key`, 
+			`mobile`, 
+			`more`, 
+			`viptime`, 
+			`province`, 
+			`city`, 
+			`district`, 
+			`isvip`, 
+			`is_convert`, 
+			`user_url`, 
+			`bind_id`, 
+			`is_es`
+		FROM
+			dt_user
+				 	<where>
+				 	1=1
+            			<if test="userType != null"> and `user_type` = #{userType}  </if>
+            			<if test="sex != null"> and `sex` = #{sex}  </if>
+            			<if test="birthday != null"> and `birthday` = #{birthday}  </if>
+            			<if test="lastLoginTime != null"> and `last_login_time` = #{lastLoginTime}  </if>
+            			<if test="score != null"> and `score` = #{score}  </if>
+            			<if test="coin != null"> and `coin` = #{coin}  </if>
+            			<if test="createTime != null"> and `create_time` = #{createTime}  </if>
+            			<if test="userStatus != null"> and `user_status` = #{userStatus}  </if>
+            			<if test="userLogin != null"> and `user_login` = #{userLogin}  </if>
+            			<if test="userPass != null"> and `user_pass` = #{userPass}  </if>
+            			<if test="userNickname != null"> and `user_nickname` = #{userNickname}  </if>
+            			<if test="userEmail != null"> and `user_email` = #{userEmail}  </if>
+            			<if test="userQq != null"> and `user_qq` = #{userQq}  </if>
+            			<if test="avatar != null"> and `avatar` = #{avatar}  </if>
+            			<if test="signature != null"> and `signature` = #{signature}  </if>
+            			<if test="lastLoginIp != null"> and `last_login_ip` = #{lastLoginIp}  </if>
+            			<if test="userActivationKey != null"> and `user_activation_key` = #{userActivationKey}  </if>
+            			<if test="mobile != null"> and `mobile` = #{mobile}  </if>
+            			<if test="more != null"> and `more` = #{more}  </if>
+            			<if test="viptime != null"> and `viptime` = #{viptime}  </if>
+            			<if test="province != null"> and `province` = #{province}  </if>
+            			<if test="city != null"> and `city` = #{city}  </if>
+            			<if test="district != null"> and `district` = #{district}  </if>
+            			<if test="isvip != null"> and `isvip` = #{isvip}  </if>
+            			<if test="isConvert != null"> and `is_convert` = #{isConvert}  </if>
+            			<if test="userUrl != null"> and `user_url` = #{userUrl}  </if>
+            			<if test="bindId != null"> and `bind_id` = #{bindId}  </if>
+            			<if test="isEs != null"> and `is_es` = #{isEs}</if>
+            		</where>
+		ORDER BY
+			id DESC
+	</select>
+	
+	<insert id="save">
+		INSERT INTO dt_user (
+			`user_type`, 
+			`sex`, 
+			`birthday`, 
+			`last_login_time`, 
+			`score`, 
+			`coin`, 
+			`create_time`, 
+			`user_status`, 
+			`user_login`, 
+			`user_pass`, 
+			`user_nickname`, 
+			`user_email`, 
+			`user_qq`, 
+			`avatar`, 
+			`signature`, 
+			`last_login_ip`, 
+			`user_activation_key`, 
+			`mobile`, 
+			`more`, 
+			`viptime`, 
+			`province`, 
+			`city`, 
+			`district`, 
+			`isvip`, 
+			`is_convert`, 
+			`user_url`, 
+			`bind_id`, 
+			`is_es`
+		)
+		VALUES (
+			#{userType}, 
+			#{sex}, 
+			#{birthday}, 
+			#{lastLoginTime}, 
+			#{score}, 
+			#{coin}, 
+			#{createTime}, 
+			#{userStatus}, 
+			#{userLogin}, 
+			#{userPass}, 
+			#{userNickname}, 
+			#{userEmail}, 
+			#{userQq}, 
+			#{avatar}, 
+			#{signature}, 
+			#{lastLoginIp}, 
+			#{userActivationKey}, 
+			#{mobile}, 
+			#{more}, 
+			#{viptime}, 
+			#{province}, 
+			#{city}, 
+			#{district}, 
+			#{isvip}, 
+			#{isConvert}, 
+			#{userUrl}, 
+			#{bindId}, 
+			#{isEs}
+		)
+	</insert>
+	
+	<select id="getObjectById" resultType="com.six.map.inch.entity.DtUserEntity">
+		SELECT
+			`id`, 
+			`user_type`, 
+			`sex`, 
+			`birthday`, 
+			`last_login_time`, 
+			`score`, 
+			`coin`, 
+			`create_time`, 
+			`user_status`, 
+			`user_login`, 
+			`user_pass`, 
+			`user_nickname`, 
+			`user_email`, 
+			`user_qq`, 
+			`avatar`, 
+			`signature`, 
+			`last_login_ip`, 
+			`user_activation_key`, 
+			`mobile`, 
+			`more`, 
+			`viptime`, 
+			`province`, 
+			`city`, 
+			`district`, 
+			`isvip`, 
+			`is_convert`, 
+			`user_url`, 
+			`bind_id`, 
+			`is_es`
+		FROM
+			dt_user
+		WHERE mobile = #{mobile}
+	</select>
+	
+	<update id="update">
+		UPDATE dt_user
+	 	<set>
+			<if test="userType != null">`user_type` = #{userType}, </if>
+			<if test="sex != null">`sex` = #{sex}, </if>
+			<if test="birthday != null">`birthday` = #{birthday}, </if>
+			<if test="lastLoginTime != null">`last_login_time` = #{lastLoginTime}, </if>
+			<if test="score != null">`score` = #{score}, </if>
+			<if test="coin != null">`coin` = #{coin}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="userStatus != null">`user_status` = #{userStatus}, </if>
+			<if test="userLogin != null">`user_login` = #{userLogin}, </if>
+			<if test="userPass != null">`user_pass` = #{userPass}, </if>
+			<if test="userNickname != null">`user_nickname` = #{userNickname}, </if>
+			<if test="userEmail != null">`user_email` = #{userEmail}, </if>
+			<if test="userQq != null">`user_qq` = #{userQq}, </if>
+			<if test="avatar != null">`avatar` = #{avatar}, </if>
+			<if test="signature != null">`signature` = #{signature}, </if>
+			<if test="lastLoginIp != null">`last_login_ip` = #{lastLoginIp}, </if>
+			<if test="userActivationKey != null">`user_activation_key` = #{userActivationKey}, </if>
+			<if test="mobile != null">`mobile` = #{mobile}, </if>
+			<if test="more != null">`more` = #{more}, </if>
+			<if test="viptime != null">`viptime` = #{viptime}, </if>
+			<if test="province != null">`province` = #{province}, </if>
+			<if test="city != null">`city` = #{city}, </if>
+			<if test="district != null">`district` = #{district}, </if>
+			<if test="isvip != null">`isvip` = #{isvip}, </if>
+			<if test="isConvert != null">`is_convert` = #{isConvert}, </if>
+			<if test="userUrl != null">`user_url` = #{userUrl}, </if>
+			<if test="bindId != null">`bind_id` = #{bindId}, </if>
+			<if test="isEs != null">`is_es` = #{isEs}</if>
+		</set>
+		WHERE
+			id = #{id}
+	</update>
+	
+	<delete id="batchRemove">
+		DELETE
+		FROM
+			dt_user
+		WHERE
+			id IN
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<select id="selectInIds" resultType="long">
+    		select id
+    		FROM
+    			dt_user
+    		WHERE
+    			id IN
+    		<foreach item="id" collection="list" open="(" separator="," close=")">
+    			#{id}
+    		</foreach>
+    	</select>
+
+</mapper>

@@ -87,7 +87,7 @@ public class SysLogAspect {
         }
         sysLog.setTime(time);
         //保存系统日志
-        sysLogMapper.save(sysLog);
+        //sysLogMapper.save(sysLog);
     }
 
 }

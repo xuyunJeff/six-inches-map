@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.six.map.inch.dao.DtDrawCollectionMapper">
+	
+	<select id="listForPage" resultType="com.six.map.inch.entity.DtDrawCollectionEntity">
+		SELECT
+			`id`, 
+			`user_id`, 
+			`mapid`, 
+			`type`, 
+			`json`, 
+			`zindex`, 
+			`title`, 
+			`des`, 
+			`lat`, 
+			`lng`, 
+			`title_arr`, 
+			`des_arr`, 
+			`add_time`
+		FROM
+			dt_draw_collection
+				 	<where>
+				 	1=1
+            			<if test="userId != null"> and `user_id` = #{userId}  </if>
+            			<if test="mapid != null"> and `mapid` = #{mapid}  </if>
+            			<if test="type != null"> and `type` = #{type}  </if>
+            			<if test="json != null"> and `json` = #{json}  </if>
+            			<if test="zindex != null"> and `zindex` = #{zindex}  </if>
+            			<if test="title != null"> and `title` = #{title}  </if>
+            			<if test="des != null"> and `des` = #{des}  </if>
+            			<if test="lat != null"> and `lat` = #{lat}  </if>
+            			<if test="lng != null"> and `lng` = #{lng}  </if>
+            			<if test="titleArr != null"> and `title_arr` = #{titleArr}  </if>
+            			<if test="desArr != null"> and `des_arr` = #{desArr}  </if>
+            			<if test="addTime != null"> and `add_time` = #{addTime}</if>
+            		</where>
+		ORDER BY
+			id DESC
+	</select>
+	
+	<insert id="save">
+		INSERT INTO dt_draw_collection (
+			`user_id`, 
+			`mapid`, 
+			`type`, 
+			`json`, 
+			`zindex`, 
+			`title`, 
+			`des`, 
+			`lat`, 
+			`lng`, 
+			`title_arr`, 
+			`des_arr`, 
+			`add_time`
+		)
+		VALUES (
+			#{userId}, 
+			#{mapid}, 
+			#{type}, 
+			#{json}, 
+			#{zindex}, 
+			#{title}, 
+			#{des}, 
+			#{lat}, 
+			#{lng}, 
+			#{titleArr}, 
+			#{desArr}, 
+			#{addTime}
+		)
+	</insert>
+	
+	<select id="getObjectById" resultType="com.six.map.inch.entity.DtDrawCollectionEntity">
+		SELECT
+			`id`, 
+			`user_id`, 
+			`mapid`, 
+			`type`, 
+			`json`, 
+			`zindex`, 
+			`title`, 
+			`des`, 
+			`lat`, 
+			`lng`, 
+			`title_arr`, 
+			`des_arr`, 
+			`add_time`
+		FROM
+			dt_draw_collection
+		WHERE
+			id = #{id}
+	</select>
+	
+	<update id="update">
+		UPDATE dt_draw_collection
+	 	<set>
+			<if test="userId != null">`user_id` = #{userId}, </if>
+			<if test="mapid != null">`mapid` = #{mapid}, </if>
+			<if test="type != null">`type` = #{type}, </if>
+			<if test="json != null">`json` = #{json}, </if>
+			<if test="zindex != null">`zindex` = #{zindex}, </if>
+			<if test="title != null">`title` = #{title}, </if>
+			<if test="des != null">`des` = #{des}, </if>
+			<if test="lat != null">`lat` = #{lat}, </if>
+			<if test="lng != null">`lng` = #{lng}, </if>
+			<if test="titleArr != null">`title_arr` = #{titleArr}, </if>
+			<if test="desArr != null">`des_arr` = #{desArr}, </if>
+			<if test="addTime != null">`add_time` = #{addTime}</if>
+		</set>
+		WHERE
+			id = #{id}
+	</update>
+
+	<delete id="remove">
+		DELETE
+		FROM
+		dt_draw_collection
+		WHERE
+		id = #{id}
+	</delete>
+
+	<delete id="batchRemove">
+		DELETE
+		FROM
+			dt_draw_collection
+		WHERE
+			id IN
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<select id="selectInIds" resultType="long">
+    		select id
+    		FROM
+    			dt_draw_collection
+    		WHERE
+    			id IN
+    		<foreach item="id" collection="list" open="(" separator="," close=")">
+    			#{id}
+    		</foreach>
+    	</select>
+
+</mapper>
