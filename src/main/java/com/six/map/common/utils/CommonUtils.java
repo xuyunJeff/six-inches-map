@@ -2,6 +2,8 @@ package com.six.map.common.utils;
 
 import com.six.map.common.constant.MsgConstant;
 import com.six.map.common.constant.SystemConstant;
+import com.six.map.common.entity.AutoBaseEntity;
+import com.six.map.common.entity.Page;
 import com.six.map.common.entity.R;
 import org.apache.commons.io.output.FileWriterWithEncoding;
 import org.apache.commons.lang.StringUtils;
@@ -13,6 +15,7 @@ import org.beetl.core.resource.FileResourceLoader;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -161,4 +164,9 @@ public class CommonUtils {
         }
     }
 
+    public static <E extends AutoBaseEntity> R change(Page<E> page) {
+        R ok = R.ok(MsgConstant.MSG_OPERATION_SUCCESS);
+        ok.put("data", page.getRows());
+        return ok;
+    }
 }

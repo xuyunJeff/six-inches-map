@@ -12,4 +12,6 @@ import java.util.List;
 @Mapper
 public interface DtAppVersionMapper extends AutoBaseMapper<DtAppVersionEntity> {
     List<Long> selectInIds(List<Long> id);
+
+    DtAppVersionEntity getLastestVersion();
 }

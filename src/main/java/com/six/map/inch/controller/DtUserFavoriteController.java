@@ -36,7 +36,7 @@ public class DtUserFavoriteController extends AbstractController {
      */
     @PostMapping("/index")
     @ApiOperation(value = "列表", notes = "列表")
-    public Page<DtUserFavoriteEntity> list(@RequestBody Map<String, Object> param) {
+    public R list(@RequestBody Map<String, Object> param) {
         return dtUserFavoriteService.listEntity(param);
     }
 

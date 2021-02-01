@@ -36,7 +36,7 @@ public class DtMapNameController extends AbstractController {
      */
     @PostMapping("/getmaplist")
     @ApiOperation(value = "列表", notes = "列表")
-    public Page<DtMapNameEntity> list(@RequestBody Map<String, Object> param) {
+    public R list(@RequestBody Map<String, Object> param) {
         return dtMapNameService.listEntity(param);
     }
 
@@ -58,7 +58,6 @@ public class DtMapNameController extends AbstractController {
      * @return
      */
     @PostMapping("/info")
-    @ApiOperation(value = "根据id查询详情", notes = "根据id查询详情")
     public R getById(@RequestBody Long id) {
         return dtMapNameService.getEntityById(id);
     }

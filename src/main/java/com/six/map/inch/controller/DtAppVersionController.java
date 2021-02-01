@@ -37,9 +37,8 @@ public class DtAppVersionController extends AbstractController {
      */
     @PostMapping("/version")
     @ApiOperation(value = "获取APP版本", notes = "获取APP版本")
-    @ApiParam(name = "用户对象", value = "传入json格式", required = true)
-    public Page<DtAppVersionEntity> list(@RequestBody  Map<String, Object> param) {
-        return dtAppVersionService.listEntity(param);
+    public R list() {
+        return dtAppVersionService.getLastestVersion();
     }
 
     /**

@@ -48,7 +48,7 @@ public class SysLogController extends AbstractController {
         return sysLogService.batchRemove(id);
     }
 
-    /**
+    /**r
      * 清空日志
      *
      * @return

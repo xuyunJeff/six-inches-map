@@ -34,7 +34,7 @@ public class DtDrawCollectionController extends AbstractController {
      */
     @PostMapping("/index")
     @ApiOperation(value = "获取我的标注列表", notes = "获取我的标注列表")
-    public Page<DtDrawCollectionEntity> list(@RequestBody Map<String, Object> param) {
+    public R list(@RequestBody Map<String, Object> param) {
         return dtDrawCollectionService.listEntity(param);
     }
 

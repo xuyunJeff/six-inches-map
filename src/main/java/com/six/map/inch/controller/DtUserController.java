@@ -39,7 +39,7 @@ public class DtUserController extends AbstractController {
      */
     @PostMapping("/list")
     @ApiOperation(value = "列表", notes = "列表")
-    public Page<DtUserEntity> list(@RequestBody Map<String, Object> param) {
+    public R list(@RequestBody Map<String, Object> param) {
         return dtUserService.listEntity(param);
     }
 

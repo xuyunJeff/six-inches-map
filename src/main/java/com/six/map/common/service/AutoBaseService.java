@@ -50,14 +50,14 @@ public abstract class AutoBaseService<M extends AutoBaseMapper, E extends AutoBa
     /**
      * 分页查询
      *
-     * @param params
+     * @param
      * @return
      */
-    public Page<E> listEntity(Map<String, Object> param) {
+    public R listEntity(Map<String, Object> param) {
         Query query = new Query(param);
         Page<E> page = new Page<>(query);
         mapper.listForPage(page, query);
-        return page;
+        return CommonUtils.change(page);
     }
 
     /**

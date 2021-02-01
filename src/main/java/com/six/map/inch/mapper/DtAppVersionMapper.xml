@@ -109,4 +109,7 @@
     		</foreach>
     	</select>
 
+	<select id="getLastestVersion" resultType="com.six.map.inch.entity.DtAppVersionEntity">
+		select * from (select * from dt_app_version order by version_code desc) t limit 1
+	</select>
 </mapper>
