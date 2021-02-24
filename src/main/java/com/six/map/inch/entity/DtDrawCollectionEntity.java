@@ -24,7 +24,7 @@ public class DtDrawCollectionEntity extends AutoBaseEntity {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "JDBC")
-    private Integer id;
+    private Long id;
 
     /**
      * 用户id

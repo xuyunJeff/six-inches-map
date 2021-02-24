@@ -35,7 +35,7 @@ public class DtUserFavoriteController extends AbstractController {
      * @return
      */
     @PostMapping("/index")
-    @ApiOperation(value = "列表", notes = "列表")
+    @ApiOperation(value = "获取我的收藏", notes = "")
     public R list(@RequestBody Map<String, Object> param) {
         return dtUserFavoriteService.listEntity(param);
     }
@@ -48,7 +48,7 @@ public class DtUserFavoriteController extends AbstractController {
      */
     @PostMapping("/save")
     public R save(@RequestBody DtUserFavoriteEntity dtUserFavorite) {
-        return dtUserFavoriteService.saveEntity(dtUserFavorite);
+        return dtUserFavoriteService.saveEntity(dtUserFavorite.getId(), dtUserFavorite);
     }
 
     /**

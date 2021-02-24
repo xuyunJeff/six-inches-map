@@ -47,7 +47,7 @@ public class DtDrawCollectionController extends AbstractController {
     @ApiOperation(value = "添加标注", notes = "添加标注")
     @PostMapping("/save")
     public R save(@RequestBody DtDrawCollectionEntity dtDrawCollection) {
-        return dtDrawCollectionService.saveEntity(dtDrawCollection);
+        return dtDrawCollectionService.saveEntity(dtDrawCollection.getId(), dtDrawCollection);
     }
 
     /**

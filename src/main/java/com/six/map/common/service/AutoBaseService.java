@@ -66,10 +66,8 @@ public abstract class AutoBaseService<M extends AutoBaseMapper, E extends AutoBa
      * @param
      * @return
      */
-    public R saveEntity(E entity) {
-        DtUserEntity user = (DtUserEntity) entity;
-        String mobile = user.getMobile();
-        Object userDto = mapper.getObjectById(mobile);
+    public R saveEntity(long id, E entity) {
+        Object userDto = mapper.getObjectById(id);
         int count = 0;
         if (userDto == null) {
             count = mapper.insert(entity);

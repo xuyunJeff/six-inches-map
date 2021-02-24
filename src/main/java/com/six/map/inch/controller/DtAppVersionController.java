@@ -49,7 +49,7 @@ public class DtAppVersionController extends AbstractController {
      */
     @PostMapping("/save")
     public R save(@RequestBody DtAppVersionEntity dtAppVersion) {
-        return dtAppVersionService.saveEntity(dtAppVersion);
+        return dtAppVersionService.saveEntity(dtAppVersion.getId(), dtAppVersion);
     }
 
     /**

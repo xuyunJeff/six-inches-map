@@ -35,7 +35,7 @@ public class DtMapNameController extends AbstractController {
      * @return
      */
     @PostMapping("/getmaplist")
-    @ApiOperation(value = "列表", notes = "列表")
+    @ApiOperation(value = "获取所有地图", notes = "")
     public R list(@RequestBody Map<String, Object> param) {
         return dtMapNameService.listEntity(param);
     }
@@ -48,7 +48,8 @@ public class DtMapNameController extends AbstractController {
      */
     @PostMapping("/save")
     public R save(@RequestBody DtMapNameEntity dtMapName) {
-        return dtMapNameService.saveEntity(dtMapName);
+
+        return dtMapNameService.saveEntity(dtMapName.getId(), dtMapName);
     }
 
     /**

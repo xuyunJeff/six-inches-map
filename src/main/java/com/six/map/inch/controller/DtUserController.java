@@ -38,7 +38,7 @@ public class DtUserController extends AbstractController {
      * @return
      */
     @PostMapping("/list")
-    @ApiOperation(value = "列表", notes = "列表")
+    //@ApiOperation(value = "列表", notes = "列表")
     public R list(@RequestBody Map<String, Object> param) {
         return dtUserService.listEntity(param);
     }
@@ -53,7 +53,8 @@ public class DtUserController extends AbstractController {
     @ApiParam(name = "用户对象", value = "传入json格式", required = true)
     @PostMapping("/register/doRegister")
     public R save(@RequestBody DtUserEntity dtUser) {
-        return dtUserService.saveEntity(dtUser);
+
+        return dtUserService.saveEntity(dtUser.getId(), dtUser);
     }
 
     /**
